@@ -8,7 +8,7 @@ tryChance = 5
 continueChance = "y"
 result = (tryChance > 0) and (continueChance == "y")
 
-result (x > 0) or (x % 2 == 0)
+result = (x > 0) or (x % 2 == 0)
 
 result = not(x > 0)
 

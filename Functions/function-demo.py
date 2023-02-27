@@ -30,7 +30,7 @@
 #                     break
 #####         (primary.append(i), print("Hit ", end="-")) if isPrim else print("Miss ", end="-")  
 #              else:  #we may also use this else that belongs to the for loop!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-#                  primary.appen(i)         
+#                  primary.append(i)         
 
 # findPrimary(2, 11)
 # print("\n{}".format(primary))

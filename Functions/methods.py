@@ -7,6 +7,6 @@ print(list)
 print(type(list))  # class list
 
 myString = "Hello"  # class str
-myString.upper()  # after . ther are method like this .upper()
+print(myString.upper())  # after . ther are method like this .upper()
 print(type(myString))
 
