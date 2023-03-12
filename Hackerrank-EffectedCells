@@ -1,0 +1,93 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+
+# Complete the 'FindEffectedCells' function below.
+#
+# The function is expected to return a 2D_INTEGER_LIST (effected cells of grid).
+# The function accepts following parameters:
+#  1. grid - 2D_CHAR_LIST (cells of grid)
+#  2. x - INTEGER (action start cell x index)
+#  3. y - INTEGER (action start cell y index)
+# !! Note that a cell with indexes (x, y) can be accessed by grid[y][x] !!
+#
+
+
+def FindEffectedCells(grid, x, y):
+    myList = [[]]
+    if grid[y][x] == 'c':
+        myList[0] = [x,y]
+    if grid[y][x] == 'b':
+        grid[y][x] == 'c'
+        if(x-1 >= 0 and y-1 >= 0):
+            FindEffectedCells(grid, x-1, y-1)
+        if(x-1 >= 0):
+            FindEffectedCells(grid, x-1, y)
+        if(x-1 >= 0 and y+1 >= 0):  
+            FindEffectedCells(grid, x-1, y+1)
+        if(y-1 >= 0):
+            FindEffectedCells(grid, x, y-1)
+        
+        FindEffectedCells(grid, x, y)
+        if(y+1 >= 0):
+            FindEffectedCells(grid, x, y+1)
+        if(x+1 >= 0 and y-1 >= 0):
+            FindEffectedCells(grid, x+1, y-1)
+        if(x+1 >= 0):
+            FindEffectedCells(grid, x+1, y)
+        if(x+1 >= 0 and y+1 >= 0):
+            FindEffectedCells(grid, x+1, y+1)
+
+    if grid[y][x] == 'h':
+        grid[y][x] == 'c'
+        i = 0
+        while i < (len(grid[y])-y):
+            FindEffectedCells(grid, x, i)
+            i = i + 1
+        t = y + 1
+        v = y + 1
+        while v < (len(grid[y])-y):
+            FindEffectedCells(grid, x, t)
+            t = t + 1
+            v = v - 1
+            
+    if grid[y][x] == 'v':
+        grid[y][x] == 'c'
+        i = 0
+        while i < (len(grid[x])-x):
+            FindEffectedCells(grid, i, y)
+            i = i + 1
+        t = x + 1
+        v = x + 1
+        while v < (len(grid[x])-x):
+            FindEffectedCells(grid, t, y)
+            t = t + 1
+            v = v - 1        
+            
+    return myList
+        
+
+
+def ParseInput():
+    width, height = map(int, input().strip().split(" "))
+    grid = [input().strip().split(" ") for _ in range(height)]
+    x, y = map(int, input().split(" "))
+    return grid, x, y
+
+
+if __name__ == '__main__':
+    grid, x, y = ParseInput()
+
+    result = FindEffectedCells(grid, x, y)
+    result = sorted(result, key=lambda x: (x[0], x[1]))
+
+    output_file_name = os.environ['OUTPUT_PATH'] 
+
+    with open(output_file_name, 'w') as output_file:
+        output_file.write('\n'.join([f'{x} {y}' for x, y in result]))
+        output_file.write('\n')

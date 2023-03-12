@@ -1,0 +1,34 @@
+def multi_word_search(doc_list, keywords):
+    """
+    Takes list of documents (each document is a string) and a list of keywords.  
+    Returns a dictionary where each key is a keyword, and the value is a list of indices
+    (from doc_list) of the documents containing that keyword
+
+    >>> doc_list = ["The Learn Python Challenge Casino.", "They bought a car and a casino", "Casinoville"]
+    >>> keywords = ['casino', 'they']
+    >>> multi_word_search(doc_list, keywords)
+    {'casino': [0, 1], 'they': [1]}
+    """
+    list = {}
+    list2 = []   
+    
+    i = 0
+    for keyword in keywords:
+        i = 0
+        list2 = []
+        for doc in doc_list:
+            doc = doc.lower()
+            #splitx = doc.split(r"[.,]")
+            splitx = doc.split()
+            print(splitx)
+            a = [sp.rstrip('.,').lower() for sp in splitx]
+            if keyword.lower() in a:
+                list2.append(i)
+            i = i + 1
+        g = {keyword:list2}
+        list.update(g)
+    return list
+
+doc_list = ["The Learn Python Challenge Casino.", "They bought a car and a casino", "Casinoville"]
+keywords = ['casino', 'they']
+print(multi_word_search(doc_list, keywords))
