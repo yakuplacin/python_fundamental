@@ -1,2 +1,5 @@
+This is the beginning test!
+This will be my middle text!
 Hello WORLD!
 This will be the text!
+This is the additionally text!
