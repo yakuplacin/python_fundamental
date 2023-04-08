@@ -2,7 +2,7 @@ names = ["Ali", "Yağmur", "Hakan", "Deniz"]
 years = [1998, 2000, 1998, 1997]
 
 names.append("Cenk")
-names.insert(0,"Sena")
+names.insert(0, "Sena")
 names.remove("Deniz")
 # del names[4]
 # names.pop()
@@ -12,7 +12,6 @@ names.remove("Deniz")
 # isIn = "Ali" in names
 isIn = names.index("Ali")
 print(isIn)
-
 
 
 names.reverse()
@@ -45,4 +44,4 @@ print(x)
 index = names.index("Hakan")
 print(index)
 
-names.pop(index) #deletes the "Hakan" means 2nd index
+names.pop(index)  # deletes the "Hakan" means 2nd index
